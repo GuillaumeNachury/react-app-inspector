@@ -1,0 +1,8 @@
+.Toolbar{
+    background-color: rgb(23, 30, 37);
+    color: #ffffff;
+    padding: 10px;
+   display: flex;
+   justify-content: space-between;
+    box-sizing: border-box;
+}

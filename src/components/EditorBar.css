@@ -1,0 +1,16 @@
+.EditorBar{
+    background-color: rgb(23, 30, 37);
+    display: flex;
+    flex-direction: row;
+    color:#FFF;
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    cursor: pointer;
+    position:fixed;
+    z-index: 11;
+}
+
+.EditorBar .Action{
+    color: #FFF;
+}

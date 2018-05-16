@@ -1,0 +1,24 @@
+    .BigButton{
+    width:210px;
+    background-color: white;
+    
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    font-size: 20px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 10px 25px -1px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 10px 25px -1px rgba(0,0,0,0.1);
+    box-shadow: 0px 10px 25px -1px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    margin: 10px;
+    padding: 20px;
+    cursor: pointer;
+    flex-direction: column;
+  }
+  
+  .BigButton:hover{
+    -webkit-box-shadow: 0px 10px 25px -1px rgba(0,0,0,0.18);
+    -moz-box-shadow: 0px 10px 25px -1px rgba(0,0,0,0.18);
+    box-shadow: 0px 10px 25px -1px rgba(0,0,0,0.18);
+  }

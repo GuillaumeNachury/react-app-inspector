@@ -1,0 +1,43 @@
+.Node{
+    width:150px;
+    background-color: white;
+    display: flex;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 10px 25px -1px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 10px 25px -1px rgba(0,0,0,0.1);
+    box-shadow: 0px 10px 25px -1px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    justify-content:center;
+    flex-direction: column;
+    position: absolute;
+    padding:5px;
+    font-size: 14px;
+    transition: 350ms opacity;
+}
+
+
+.Node h3{
+    text-align: center;
+    align-self: center;
+}
+
+.Highlighter{
+    position:absolute;
+    top:5px;
+    right:10px;
+    cursor: pointer;
+}
+
+.Code{
+    position:absolute;
+    bottom:5px;
+    right:10px;
+    cursor: pointer;
+}
+
+.Com{
+    position:absolute;
+    color:orangered;
+    top:5px;
+    left:10px;
+}
