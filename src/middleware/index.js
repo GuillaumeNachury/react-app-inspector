@@ -1,5 +1,5 @@
 /**
- * @author Guillaume Nachury - SQLI Group
+ * @author Guillaume Nachury 
  * @flow
  */
 

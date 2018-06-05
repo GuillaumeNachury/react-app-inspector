@@ -27,9 +27,10 @@
     "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "electron-pack-mac": "build --mac --config.icon=src/assets/icons/logo.icns",
     "electron-pack-win": "build --win",
-    "preelectron-pack-mac": "yarn build"
+    "preelectron-pack-mac": "yarn build",
+    "preelectron-pack-win": "yarn build"
   },
-  "main": "build/electron.js",
+  "main": "public/electron.js",
   "homepage": "./",
   "author": "Guillaume Nachury (@__Guillaume)",
   "description":"A useful tool to inspect your React (JS & Native) project, analyze code complexity, and do code reviews at a glance",

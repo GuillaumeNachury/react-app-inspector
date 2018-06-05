@@ -1,5 +1,5 @@
 /*
-    Guillaume Nachury - SQLI Group
+    Guillaume Nachury 
 */
 
 import React, {Component} from 'react';

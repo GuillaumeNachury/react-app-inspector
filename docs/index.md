@@ -1,11 +1,15 @@
+# Download
+[Mac build](https://github.com/GuillaumeNachury/react-app-inspector/tree/master/binaries/mac)
+[Windows build](https://github.com/GuillaumeNachury/react-app-inspector/tree/master/binaries/win)
+
 # How to use
 * Launch the app
-* Click on _Audit an existing project_
+* Click on `Audit an existing project`
 * Select the main `package.json`
 * Edit the exclusion directory list (if needed)
 * Enter your reviewer name
-* Click _Start analysis_
-* :rocket:
+* Click `Start analysis`
+* Have fun :rocket:
 
 ## Your playground
 
@@ -22,4 +26,12 @@ You can export the code review by clicking on the _Export code review_ button fr
 Don't forget to set your reviewer name befor exporting.
 
 
+## Hack it
+You can hack this tool to improve / fix bugs / for fun and create your own build : https://github.com/GuillaumeNachury/react-app-inspector/
 
+
+## Road map
+This is still a beta version and new version may follow. So if you have good features / improvements ideas, drop me a message.
+
+
+If you are ever on Twitter come and say hi : @__Guillaume
