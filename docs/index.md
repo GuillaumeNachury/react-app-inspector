@@ -1,6 +1,5 @@
 # Download
-[Mac build](https://github.com/GuillaumeNachury/react-app-inspector/tree/master/binaries/mac)
-[Windows build](https://github.com/GuillaumeNachury/react-app-inspector/tree/master/binaries/win)
+[Mac & Windows releases](https://github.com/GuillaumeNachury/react-app-inspector/releases)
 
 # How to use
 * Launch the app
@@ -9,16 +8,16 @@
 * Edit the exclusion directory list (if needed)
 * Enter your reviewer name
 * Click `Start analysis`
-* Have fun :rocket:
+* Have fun 
 
 ## Your playground
 
 The playground provides an overview of the project classes dependencies so you can quickly check the __code complexity__, __bottlenecks__, make __impact analysis__ or do __code reviews__.
 
-### Main features :
+### Main features
 ![GitHub Logo](./screenshots/features.jpg)
 
-### Code viewer :
+### Code viewer
 ![GitHub Logo](./screenshots/review.jpg)
 
 #### Export
