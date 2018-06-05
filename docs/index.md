@@ -1,6 +1,5 @@
 # Download
-[Mac build](https://github.com/GuillaumeNachury/react-app-inspector/tree/master/binaries/mac)
-[Windows build](https://github.com/GuillaumeNachury/react-app-inspector/tree/master/binaries/win)
+[Mac & Windows releases](https://github.com/GuillaumeNachury/react-app-inspector/releases)
 
 # How to use
 * Launch the app

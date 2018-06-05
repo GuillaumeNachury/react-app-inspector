@@ -1,8 +1,8 @@
-### For any app details please go to https://guillaumenachury.github.io/react-app-inspector/
+## For any app details please go to https://guillaumenachury.github.io/react-app-inspector/
 
-## Mac and Windows executables are available ![here](https://github.com/GuillaumeNachury/react-app-inspector/tree/master/docs)
+#### Mac and Windows executables are available [here](https://github.com/GuillaumeNachury/react-app-inspector/releases)
 
-### How to build your own version
+#### How to build your own version
 Grab dependencies
 ```shell
 yarn
