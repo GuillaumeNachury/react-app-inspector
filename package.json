@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "electron": "^1.7.9",
+    "electron-is-dev": "^0.3.0",
     "font-awesome": "^4.7.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -23,7 +23,29 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "electron": "electron ."
+    "electron": "electron .",
+    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-pack-mac": "build --mac --config.icon=src/assets/icons/logo.icns",
+    "electron-pack-win": "build --win",
+    "preelectron-pack-mac": "yarn build"
   },
-  "main": "main.js"
+  "main": "build/electron.js",
+  "homepage": "./",
+  "author": "Guillaume Nachury (@__Guillaume)",
+  "description":"A useful tool to inspect your React (JS & Native) project, analyze code complexity, and do code reviews at a glance",
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "electron-builder": "^20.15.1",
+    "electron": "^2.0.2",
+    "wait-on": "^2.1.0"
+  },
+  "build": {
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories":{
+      "buildResources": "src/assets"
+    }
+  }
 }

@@ -1,6 +1,6 @@
 const electron = window.require('electron')
 const remote = electron.remote
-const mainProcess = remote.require('./main')
+const mainProcess = remote.require('./electron')
 const fs = mainProcess.fs();
 const _path = require('path');
 const IMPORT_PATTERN = /import(?:["'\s]*[\w*{}\n, ]+from\s*)?["'\s](.*[@\w/_-]+)["'\s].*/g

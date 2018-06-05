@@ -3,9 +3,10 @@ import {connect} from 'react-redux';
 
 import {act_startAnalysis} from '../actions';
 
+
 const electron = window.require('electron')
 const remote = electron.remote
-const mainProcess = remote.require('./main')
+const mainProcess = remote.require('./electron')
 
 
 

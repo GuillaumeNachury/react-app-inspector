@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 
 import './Home.css';
 
@@ -13,9 +13,11 @@ class Home extends Component {
   render() {
     return (
     <div className="App">
-      <Route exact path={this.props.match.path} component={TypeSelector} />
-      <Route path={`${this.props.match.path}existing_project`} component={DirectorySelector} />
-      <Route path={`${this.props.match.path}waitprocess`} component={WaitProcessing} />
+      <Switch>
+        <Route path={`${this.props.match.path}existing_project`} component={DirectorySelector} />
+        <Route path={`${this.props.match.path}waitprocess`} component={WaitProcessing} />
+        <Route component={TypeSelector} />
+      </Switch>
     </div>
     );
   }

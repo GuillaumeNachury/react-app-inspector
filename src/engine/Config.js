@@ -1,6 +1,6 @@
 const electron = window.require('electron')
 const remote = electron.remote
-const mainProcess = remote.require('./main')
+const mainProcess = remote.require('./electron')
 const fs = mainProcess.fs();
 const os = mainProcess.os();
 const app = mainProcess.app();
@@ -19,7 +19,7 @@ class Config{
         else{
             _config = { reviewer:os.hostname(),
                         editor:undefined,
-                        exclusions:'sssnode_modules,public,__tests__,ios,android, __mocks__,.git,build'}
+                        exclusions:'node_modules,public,__tests__,ios,android, __mocks__,.git,build,dist'}
             fs.writeFile(_cfgFile,JSON.stringify(_config), function(err) {
                 if(err) {
                     return console.log(err);

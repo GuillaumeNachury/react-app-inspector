@@ -2,12 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {act_select_analyze, act_select_createProject} from '../actions';
+import logo from '../assets/icons/256x256.png';
 
 const TypeSelector = (props)=> (
     <div className="App">
+    <img src={logo} style={{width:96, height:96,marginBottom:20}}/>
     <div className="Row">
-      <div className="BigButton" onClick={()=>props.act_select_analyze()} >
-        <i className="fa fa-wpexplorer" style={{fontSize:80, marginBottom:20}} aria-hidden="true"></i>
+      
+      <div className="BigButton" onClick={()=>props.act_select_analyze()} > 
          Audit an existing project
       </div>
       

@@ -12,13 +12,15 @@ const fs = require('fs');
 const crypto = require('crypto');
 const os = require('os');
 
+const isDev = require('electron-is-dev');
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1024, height: 768})
+  mainWindow = new BrowserWindow({width: 1024, height: 768,icon: path.join(__dirname, 'assets/icons/64x64.png')})
 
   // and load the index.html of the app.
   /*mainWindow.loadURL(url.format({
@@ -26,7 +28,9 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))*/
-  mainWindow.loadURL('http://localhost:3000');
+
+  mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
+  //mainWindow.webContents.openDevTools()
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
