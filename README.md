@@ -1,6 +1,7 @@
+![GitHub Logo](./src/assets/icons/96x96.png)
 ## For any app details please go to https://guillaumenachury.github.io/react-app-inspector/
 
-![GitHub Logo](./src/assets/icons/96x96.png)
+![GitHub Logo](./docs/screenshots/home.png)
 #### Mac and Windows executables are available [here](https://github.com/GuillaumeNachury/react-app-inspector/releases)
 
 #### How to build your own version
