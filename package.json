@@ -14,6 +14,7 @@
     "react-router-redux": "^5.0.0-alpha.8",
     "react-scripts": "1.0.17",
     "react-syntax-highlighter": "^6.1.1",
+    "react-transition-group": "^2.3.1",
     "react-virtualized": "^9.14.1",
     "reactstrap": "^4.8.0",
     "redux": "^3.7.2"
@@ -26,18 +27,18 @@
     "electron": "electron .",
     "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "electron-pack-mac": "build --mac --config.icon=src/assets/icons/logo.icns",
-    "electron-pack-win": "build --win",
+    "electron-pack-win": "build --win --config.icon=src/assets/icons/logo.ico",
     "preelectron-pack-mac": "yarn build",
     "preelectron-pack-win": "yarn build"
   },
   "main": "public/electron.js",
   "homepage": "./",
   "author": "Guillaume Nachury (@__Guillaume)",
-  "description":"A useful tool to inspect your React (JS & Native) project, analyze code complexity, and do code reviews at a glance",
+  "description": "A useful tool to inspect your React (JS & Native) project, analyze code complexity, and do code reviews at a glance",
   "devDependencies": {
     "concurrently": "^3.5.1",
-    "electron-builder": "^20.15.1",
     "electron": "^2.0.2",
+    "electron-builder": "^20.15.1",
     "wait-on": "^2.1.0"
   },
   "build": {
@@ -45,7 +46,7 @@
       "build/**/*",
       "node_modules/**/*"
     ],
-    "directories":{
+    "directories": {
       "buildResources": "src/assets"
     }
   }
