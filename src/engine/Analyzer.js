@@ -1,9 +1,12 @@
+import {normalize} from "../utils/normalizer";
 const electron = window.require('electron')
 const remote = electron.remote
 const mainProcess = remote.require('./electron')
 const fs = mainProcess.fs();
+const os = mainProcess.os();
 const _path = require('path');
 const IMPORT_PATTERN = /import(?:["'\s]*[\w*{}\n, ]+from\s*)?["'\s](.*[@\w/_-]+)["'\s].*/g
+const _separator = os.platform().indexOf('win') === 0 ? "\\":"/";
 
 class Analyzer{
 
@@ -43,7 +46,7 @@ class Analyzer{
     for(var _i=0; _i<_files.length; _i++){
         if(this.exclusions && this.exclusions.indexOf(_files[_i])!== -1 ) continue;
         
-        _fullPath = path+"/"+_files[_i];
+        _fullPath = path+_separator+_files[_i];
 
         if(fs.lstatSync(_fullPath).isDirectory()){
             this.browse(_fullPath)
@@ -56,7 +59,7 @@ class Analyzer{
                 if(fTxt){
                     let _dirPkg = JSON.parse(fTxt);
                     if(_dirPkg && _dirPkg.name){
-                        this._aliasMap[_dirPkg.name] = _fullPath.replace('/package.json','');
+                        this._aliasMap[_dirPkg.name] = _fullPath.replace(_separator+'package.json','');
                     }
                 }
                 continue;
@@ -70,6 +73,7 @@ class Analyzer{
             let match = null;
             let _imports = [];
             let _deps =[];
+            let _resolvedPath;
             while ( (match = IMPORT_PATTERN.exec( fTxt )) !== null  ){
                 let _importSrc= match[1];
                 if(_importSrc.indexOf('@') === 0){
@@ -81,7 +85,13 @@ class Analyzer{
                 }
                 else{
                     _importSrc = this.findRealFileName(path, _importSrc);
-                    _imports.push(_path.resolve(path+'/'+_importSrc));
+                    //_imports.push(_path.resolve(path+'/'+_importSrc));
+                    _resolvedPath = _path.resolve(path+_separator+_importSrc);
+                    if(os.platform().indexOf("win") === 0){
+                        if(_resolvedPath.indexOf("/")===0) _resolvedPath = _resolvedPath.substr(1);
+                        _resolvedPath=normalize(_resolvedPath)
+                    }
+                    _import.push(_resolvedPath);
                 }     
             }
             let _relP = path.replace(this._basePath, '');
@@ -105,7 +115,7 @@ class Analyzer{
             el.imports.forEach((imp, impIdx, srcImp)=>{
                 if(imp.indexOf("@") === 0){
                     let _alias = imp.match(/(@\S*)/)[0];
-                    let _hasSlash = _alias.indexOf('/');
+                    let _hasSlash = _alias.indexOf(_separator);
                     if(_hasSlash>-1){
                         _alias = _alias.substr(0,_hasSlash);
                     }
@@ -123,8 +133,13 @@ class Analyzer{
 
   findRealFileName(path, importedPath){
 
-        if(path) path +="/";
+        if(path) path +=_separator;
         else path = "";
+
+        if(os.platform().indexOf('win') === 0){
+            importedPath = importedPath.replace(/\//g, _separator);
+        }
+        
 
         if(fs.existsSync(path+importedPath) && fs.lstatSync(path+importedPath).isFile()){
             return importedPath;
@@ -138,14 +153,14 @@ class Analyzer{
         if(fs.existsSync(path+importedPath+'.ios.js') && fs.lstatSync(path+importedPath+'.ios.js').isFile()){
             return importedPath+'.ios.js';
         }
-        if(fs.existsSync(path+importedPath+'/index.js') && fs.lstatSync(path+importedPath+'/index.js').isFile()){
-            return importedPath+'/index.js';
+        if(fs.existsSync(path+importedPath+_separator+'index.js') && fs.lstatSync(path+importedPath+_separator+'index.js').isFile()){
+            return importedPath+_separator+'index.js';
         }
-        if(fs.existsSync(path+importedPath+'/index.android.js') && fs.lstatSync(path+importedPath+'/index.android.js').isFile()){
-            return importedPath+'/index.android.js';
+        if(fs.existsSync(path+importedPath+_separator+'index.android.js') && fs.lstatSync(path+importedPath+_separator+'index.android.js').isFile()){
+            return importedPath+_separator+'index.android.js';
         }
-        if(fs.existsSync(path+importedPath+'/index.ios.js') && fs.lstatSync(path+importedPath+'/index.ios.js').isFile()){
-            return importedPath+'/index.ios.js';
+        if(fs.existsSync(path+importedPath+_separator+'index.ios.js') && fs.lstatSync(path+importedPath+_separator+'index.ios.js').isFile()){
+            return importedPath+_separator+'index.ios.js';
         }
 
     }
