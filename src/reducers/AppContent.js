@@ -9,6 +9,7 @@ const electron = window.require('electron')
 const remote = electron.remote
 const mainProcess = remote.require('./electron')
 const mainWin = mainProcess.mainWindow();
+const os = mainProcess.os();
 
 
 
@@ -57,10 +58,10 @@ const reducer = (state, action)=>{
             action.asyncDispatch(push('/playground'));
             return {...state};
         case 'START_ANALYSIS':
-
+            const separator = os.platform().indexOf('win') === 0 ? "\\":"/";
             let _info = undefined;
             let _package = JSON.parse(Analyzer.getFileContent(action.scanData.packagePath));
-            let _projectPath = action.scanData.packagePath.substr(0,action.scanData.packagePath.lastIndexOf('/'));
+            let _projectPath = action.scanData.packagePath.substr(0,action.scanData.packagePath.lastIndexOf(separator));
             if(_package){
                 _info = _package.name + '_'+_package.version;
             }
