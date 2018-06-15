@@ -91,7 +91,7 @@ class Analyzer{
                         if(_resolvedPath.indexOf("/")===0) _resolvedPath = _resolvedPath.substr(1);
                         _resolvedPath=normalize(_resolvedPath)
                     }
-                    _import.push(_resolvedPath);
+                    _imports.push(_resolvedPath);
                 }     
             }
             let _relP = path.replace(this._basePath, '');
