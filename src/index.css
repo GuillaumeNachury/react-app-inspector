@@ -141,9 +141,11 @@ button{
   
 }
 
+.DashLink{
+  stroke: #3C3C3C !important;
+}
 
 @keyframes dash{
-  to{
-    stroke-dashoffset: 50;
-  }
+  from{stroke-dasharray:10,10}
+  to  {stroke-dasharray:5,5}
 }

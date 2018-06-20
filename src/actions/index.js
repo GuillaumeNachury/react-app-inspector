@@ -114,3 +114,35 @@ export const act_init = ()=>{
         type:'INIT'
     }
 }
+
+
+export const act_togglePackageColors = () =>{
+    return {
+        type:'TOGGLE_PACKAGE_COLORS'
+    }
+}
+
+export const act_colorMappingDone = map =>{
+    return {
+        type:'COLOR_MAP_DONE', map
+    }
+}
+
+export const act_toggleColorSettings = () =>{
+    return {
+        type:'TOGGLE_COLOR_SETTINGS'
+    }
+}
+export const act_addColorFilter = (pattern) => {
+    return {
+        type: 'ADD_COLOR_FILTER',
+         pattern
+    }
+};
+
+export const act_applyColorFilter = pattern => {
+    return {
+        type: 'APPLY_COLOR_FILTER',
+        pattern
+    }
+};

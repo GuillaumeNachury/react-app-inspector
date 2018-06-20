@@ -29,7 +29,8 @@
     "electron-pack-mac": "build --mac --config.icon=src/assets/icons/logo.icns",
     "electron-pack-win": "build --win --config.icon=src/assets/icons/logo.ico",
     "preelectron-pack-mac": "yarn build",
-    "preelectron-pack-win": "yarn build"
+    "preelectron-pack-win": "yarn build",
+    "prettify":"prettier --single-quote --trailing-comma 'src/**/*.js'"
   },
   "main": "public/electron.js",
   "homepage": "./",
@@ -39,6 +40,7 @@
     "concurrently": "^3.5.1",
     "electron": "^2.0.2",
     "electron-builder": "^20.15.1",
+    "prettier": "1.13.5",
     "wait-on": "^2.1.0"
   },
   "build": {

@@ -1,9 +1,10 @@
 import {push} from 'react-router-redux';
 import Analyzer from '../engine/Analyzer';
 import Commentator from '../engine/Commentator';
-import {act_analyzeFinished} from '../actions';
+import {act_analyzeFinished, act_colorMappingDone} from '../actions';
 import Config from '../engine/Config';
 import { setTimeout } from 'core-js/library/web/timers';
+import {getMap, applyFilter} from '../utils/Coloring';
 
 const electron = window.require('electron')
 const remote = electron.remote
@@ -13,11 +14,11 @@ const os = mainProcess.os();
 
 
 
-const reducer = (state, action)=>{
+const reducer = spy((state, action)=>{
 
     if(!state){
         state = {
-            version : "v. 0.26(beta)",
+            version : "v. 0.26.1(beta)",
             addComponent:false,
             files:[],
             highLightedNode:undefined,
@@ -31,7 +32,11 @@ const reducer = (state, action)=>{
             fileComments: {},
             showAddComment:false,
             projectData:{},
-            config:{}
+            config:{},
+            packageColoring:false,
+            colorSettingsDisplayed:false,
+            colorMapping:undefined,
+            colorExclusion:undefined
         };
     }
    
@@ -121,11 +126,44 @@ const reducer = (state, action)=>{
         case 'REQUEST_EDIT_FILE':
             Config.editFile(state.currentEditorFile);
             return {...state};
+        case 'TOGGLE_PACKAGE_COLORS':
+
+            if(!state.packageColoring) getMap(state.files).then(map=> action.asyncDispatch(act_colorMappingDone(map)));
+            
+            return {...state, packageColoring:!state.packageColoring,
+                    colorMapping : !state.packageColoring ? state.colorMapping:undefined
+            }
+
+        case 'COLOR_MAP_DONE':
+            return {...state,colorMapping : action.map
+            }
+        case 'TOGGLE_COLOR_SETTINGS':{
+            return {...state,colorSettingsDisplayed : !state.colorSettingsDisplayed}
+        }
+        case 'APPLY_COLOR_FILTER':{
+
+            applyFilter(action.pattern);
+            if(state.packageColoring) getMap(state.files).then(map=> action.asyncDispatch(act_colorMappingDone(map)));
+            
+            return {
+                ...state
+            }
+        }
         default:
             return {...state}
     }
 
 
+})
+
+function spy(ob){
+   return (state, action)=>{
+       console.time(action.type);
+       let _o = ob(state, action)
+       console.timeEnd(action.type);
+       //debugger;
+       return _o;
+   }
 }
 
 

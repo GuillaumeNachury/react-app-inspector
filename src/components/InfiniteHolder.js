@@ -68,8 +68,10 @@ _createLinks(el, idx){
 }
 
 _generateLink(from, to, idx, faded){
+    let className = "staticLink";
     if(faded){
         faded = ( this.props.highLightedNode === to.file.key) ? false:true;
+        if(this.props.highLightedNode === to.file.key)className = "DashLink";
     }
     let dx = (from.left+ (150>>1)) - (to.left+ (150>>1));
     let dy = from.top - to.top+82;
@@ -88,7 +90,7 @@ _generateLink(from, to, idx, faded){
         "L"+[ to.left+ (150>>1), to.top+82 ]
       ].join(" ");
 
-      return <path key={'l'+idx} d={d} className='DashLink' style={{fill:'none', stroke:'#BBB', strokeWidth:1, opacity:faded?0:1 }}/>
+      return <path key={'l'+idx} d={d} className={className} style={{fill:'none', stroke:'#BBB' ,strokeWidth:1, opacity:faded?0:1 }}/>
 }
 
 _findElementFromPath(path){

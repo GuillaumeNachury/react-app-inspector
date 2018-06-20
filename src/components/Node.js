@@ -17,6 +17,12 @@ render() {
         this.props.file.name.toUpperCase().indexOf(this.props.searchPattern.toUpperCase()) !== -1){
             _style = {..._style, border:"1px solid rgba(219, 0, 0,1)", backgroundColor:'rgba(219, 0, 0,.3)'}
         }
+    else{
+        if(this.props.packageColoring && this.props.colorMapping){
+            _style ={..._style, backgroundColor:this.props.colorMapping[this.props.file.relativePath]}
+        }
+    }
+
     return (
         <div className='Node' style={{..._style}}>
                 <h3>{this.props.file.name}</h3>
@@ -32,8 +38,11 @@ render() {
 
 function mapStateToProps(state) {
     return {
-        searchPattern : state.appContent.searchPattern
+        searchPattern : state.appContent.searchPattern, 
+        packageColoring : state.appContent.packageColoring,
+        colorMapping: state.appContent.colorMapping
     }
+    
 }
 
 export default connect(mapStateToProps, {act_toggleHighligth, act_showCodeForFile})(Node);
